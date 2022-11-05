@@ -17,6 +17,9 @@ menu = """
 
 [d] Depositar
 [s] Sacar
+[n] Novo Usuário
+[c] Nova Conta
+[lc] Lista Contas
 [e] Extrato
 [q] Sair
 
@@ -35,7 +38,9 @@ saques_acumulados = 0
 contador_deposito=0
 depositos_acumulados =0
 lista_usuarios=[]
-nro_contas=[]
+nro_conta=0
+contas=[]
+AGENCIA = "0001"
 
 
 def sacar(*,saldo,valor,extrato,limite,numero_saques,limite_saques):
@@ -70,27 +75,66 @@ def depositar(saldo,valor,extrato,/):
 
 def print_extrato(saldo,/,*,extrato):
     
+    print("\n########## Extrato ########## ") #mostra o extrato completo com os saques e depósitos.
+    extrato = extrato + f"""\n 
+\n Valor total de saques:    - R$ {saques_acumulados:.2f}
+\n Valor total de depositos: + R$ {depositos_acumulados:.2f}
+\n __________________________________________________________        
+        
+   Seu saldo é de:             R$ {saldo:6.2f}"""
+        
+    print(extrato)
     return extrato
 
-def criar_usuario(nome="",data_nascimento="DD/MM/AAAA",cpf=1234567890,endereco="logradouro, nro - bairro - cidade/sigla estado"):
+def criar_usuario(usuarios): #nome="",data_nascimento="DD/MM/AAAA",cpf=1234567890,endereco="logradouro, nro - bairro - cidade/sigla estado"
     #data de nascimento no formato: DD/MM/AAAA
     #endereço no formato: logradouro, nro - bairro - cidade/sigla estado
-    check_cpf = cpf in lista_usuarios
-    if check_cpf==True:
-        print("Usuário Já cadastrado!")
-    else:
-        lista_usuarios.append(cpf)
+    cpf =input("Informe o CPF (somente números): ")
+    usuario = filtrar_usuario(cpf,usuarios)
+    if usuario:
+        print("CPF já cadastrado! Usuário já existe!")     
+        return
     
-    return check_cpf
-
-def criar_conta(agencia="0001",nro_conta=0,usuario=1234567890 ):
-    qtdade_contas=len(nro_contas)
-    nova_conta=qtdade_contas+1
-    return nova_conta
-
-def listar_usuarios():
-    print(listar_usuarios)
+    nome = input("Infome o nome complete do usuário: ")
+    data_nascimento = input("Infome a data de nascimento (dd-mm-aaaa): ")
+    endereco = input("Informe o endereço (logradouro, nro - barro - cidade/sigla estado): ")
     
+    usuarios.append({"nome": nome, "data_nascimento":data_nascimento, "cpf":cpf, "endereco": endereco})
+    print("Usuario criado com sucesso!")
+
+def criar_conta(agencia,nro_conta,usuarios):
+    
+    cpf = input("Informe o CPF do usuário: ")
+    usuario = filtrar_usuario(cpf,usuarios)
+    
+    if usuario:
+        print("Conta criada com sucesso!")
+        return {"agencia":agencia,"nro_conta": nro_conta,"usuario":usuario}
+    
+    print("Usuário Não encontrado! Fluxo de Criação de conta encerrado!")
+
+
+def filtrar_usuario(cpf,usuarios):
+    usuarios_filtrados = [usuario for usuario in usuarios if usuario["cpf"]==cpf]
+    return usuarios_filtrados[0] if usuarios_filtrados else None
+    
+
+def listar_contas(contas):
+    for conta in contas:
+        linha = f"""
+            Agência: \t {conta['agencia']}
+            C/C:\t{conta['nro_conta']}
+            Titular: \t{conta['usuario']['nome']}
+           
+        """
+        print("="*100)
+        print(linha)
+
+    
+
+
+
+
 while True:  #laço infinito
     
     opcao = input(menu) #faz a leitura do comando de entrada
@@ -111,19 +155,22 @@ while True:  #laço infinito
         saque = float((input("Quanto você deseja sacar?:")))
         saldo,extrato = sacar(saldo=saldo,valor=saque,extrato=extrato,limite=limite,numero_saques=numero_saques,limite_saques =LIMITE_SAQUES)
         
-        
-        
+    
+    elif opcao == "n":
+        criar_usuario(usuarios=lista_usuarios)
+                
+    elif opcao == "c":
+        nro_conta = len(contas)+1
+        conta=criar_conta(AGENCIA,nro_conta,lista_usuarios)
+        if conta:
+            contas.append(conta)
+            # nro_conta +=1
+ 
+    elif opcao == "lc":
+        listar_contas(contas)
+         
     elif opcao == "e":
-        print("########## Extrato ########## ") #mostra o extrato completo com os saques e depósitos.
-        extrato = extrato + f"""\n 
-\n Valor total de saques:    - R$ {saques_acumulados:.2f}
-\n Valor total de depositos: + R$ {depositos_acumulados:.2f}
-\n __________________________________________________________        
-        
-   Seu saldo é de:             R$ {saldo:6.2f}"""
-        
-        print(extrato)
-        
+        print_extrato(saldo,extrato=extrato)        
         
     elif opcao == "q":
         print("\n\nEncerrando...\n O Banco MR agradece a sua preferência!\n\n")
