@@ -1,7 +1,7 @@
 import pymongo as pyM
 import datetime
 import pprint
-client = pyM.MongoClient("mongodb+srv://eabs86:pymongo1@cluster1.msjr9x6.mongodb.net/?retryWrites=true&w=majority")
+client = pyM.MongoClient("mongodb+srv://usuario:senha@cluster1.msjr9x6.mongodb.net/?retryWrites=true&w=majority")
 
 db = client.test
 
