@@ -8,7 +8,7 @@ with open('requirements.txt') as f:
     
 
 setup(
-    name='image_processing',
+    name='image_processing_dio_eabs86',
     version='0.0.1',
     author='Emmanuel Andrade',
     author_email='emmanuel.andrade@gmail.com',

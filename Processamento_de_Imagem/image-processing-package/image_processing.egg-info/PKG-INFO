@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: image-processing
+Version: 0.0.1
+Summary: Pacote criado durante o bootcamp Python Developer da DIO
+Home-page: https://github.com/eabs86/dio_python_projetos/tree/master/Processamento_de_Imagem/image-processing-package
+Author: Emmanuel Andrade
+Author-email: emmanuel.andrade@gmail.com
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+#image_processing
+
+DescriÃ§Ã£o
+O pacote image_processing Ã© utilizado para:
+    Processamento (Processing):
+        - Match de histograma
+        - Similaridade de estruturas
+        - Redimensionamento de imagens
+    Utilidades (Utils):
+        - Leitura de imagem
+        - Salvar imagem
+        - Apresentar(plot) imagem
+        - Apresentar(plot) histogramas
+        - Apresentar(plot) resultados
+
+## InstalaÃ§Ã£o
+
+Use o gerenciador de pacotes [pip](https://pip.pypa.io/en/stable/) para instalar o image_processing
+
+''' bash
+pip install image_processing
+
+'''
+
+
+## Uso
+
+Exemplo de uso
+
+'''python
+
+from image_processing.processing import combination
+
+combination.find_difference(image1,image2)
+
+## Author
+
+Emmanuel Andrade
+
+## License
+[MIT] (https://choosealicense.com/licenses/mit/)
+     
