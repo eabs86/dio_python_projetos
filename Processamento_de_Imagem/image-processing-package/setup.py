@@ -15,7 +15,7 @@ setup(
     description='Pacote criado durante o bootcamp Python Developer da DIO',
     long_description= page_description,
     long_description_content_type='text/markdown',
-    url=,
+    url='https://github.com/eabs86/dio_python_projetos/tree/master/Processamento_de_Imagem/image-processing-package',
     packages= find_packages(),
     install_requires = requirements,
     python_requires = '>=3.8'
