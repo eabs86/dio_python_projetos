@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
 Name: image-processing-dio-eabs86
-Version: 0.0.1
+Version: 0.0.3
 Summary: Pacote criado durante o bootcamp Python Developer da DIO
-Home-page: https://github.com/eabs86/dio_python_projetos/tree/master/Processamento_de_Imagem/image-processing-package
+Home-page: https://github.com/eabs86/dio_python_projetos/tree/master/Processamento_de_Imagem/image-processing-package-dio-eabs86
 Author: Emmanuel Andrade
 Author-email: emmanuel.andrade@gmail.com
 Requires-Python: >=3.8
@@ -27,9 +27,8 @@ O pacote image_processing Ã© utilizado para:
 
 Use o gerenciador de pacotes [pip](https://pip.pypa.io/en/stable/) para instalar o image_processing
 
-''' bash
+'''bash
 pip install image_processing_dio_eabs86
-
 '''
 
 
@@ -38,10 +37,9 @@ pip install image_processing_dio_eabs86
 Exemplo de uso
 
 '''python
-
 from image_processing.processing import combination
-
 combination.find_difference(image1,image2)
+'''
 
 ## Author
 

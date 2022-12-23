@@ -9,7 +9,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='image_processing_dio_eabs86',
-    version='0.0.2',
+    version='0.0.3',
     author='Emmanuel Andrade',
     author_email='emmanuel.andrade@gmail.com',
     description='Pacote criado durante o bootcamp Python Developer da DIO',
