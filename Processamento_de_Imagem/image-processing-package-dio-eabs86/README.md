@@ -17,9 +17,8 @@ O pacote image_processing é utilizado para:
 
 Use o gerenciador de pacotes [pip](https://pip.pypa.io/en/stable/) para instalar o image_processing
 
-''' bash
+'''bash
 pip install image_processing_dio_eabs86
-
 '''
 
 
@@ -28,10 +27,9 @@ pip install image_processing_dio_eabs86
 Exemplo de uso
 
 '''python
-
 from image_processing.processing import combination
-
 combination.find_difference(image1,image2)
+'''
 
 ## Author
 
