@@ -1,7 +1,7 @@
 from models import Pessoas, db_session
 
 def insere_pessoas():
-    pessoa = Pessoas(nome='Ciclano', idade='20')
+    pessoa = Pessoas(nome='Beltrano', idade='21')
     print(pessoa)
     pessoa.save()
 
