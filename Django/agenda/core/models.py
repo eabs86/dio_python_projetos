@@ -15,6 +15,8 @@ class Evento(models.Model):
 
     def __str__(self):
         return self.titulo
+    def get_data_evento(self):
+        return self.data_evento.strftime('%d/%m/%Y %H:%m')
 
 '''
 Comandos para criar o arquivo de migração:
