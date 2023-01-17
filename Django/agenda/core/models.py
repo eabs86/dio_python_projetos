@@ -17,6 +17,8 @@ class Evento(models.Model):
         return self.titulo
     def get_data_evento(self):
         return self.data_evento.strftime('%d/%m/%Y %H:%m')
+    def get_data_input_evento(self): #função importante para colocar a data no padrão queo datetime-local entende
+        return self.data_evento.strftime('%Y-%m-%dT%H:%M')
 
 '''
 Comandos para criar o arquivo de migração:
