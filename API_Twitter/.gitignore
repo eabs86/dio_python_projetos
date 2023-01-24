@@ -1,0 +1,4 @@
+src/secrets.py
+*.pyc
+*.idea
+*.pytest_cache
